@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Simple login</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+      $(document).ready(function(){
+        var user,age,stud, income, passport, family, place, time;
+        $("#submit").click(function(){
+          user=$("#user").val();
+          age=$("#years").val();
+          stud=$("#learn").val();
+          income=$("#income").val();
+          passport=$("#passport").val();
+          family=$("#family").val();
+          place=$("#place").val();
+          time=$("#time").val();
+
+          $.post("http://localhost:3000/login",{user: user, 
+                                                years: age, 
+                                                learn: stud, 
+                                                income: income,
+                                                passport: passport,
+                                                family: family,
+                                                place: place,
+                                                time: time
+                                              }
+                                              , function(data){
+            if(data==='done')
+              {
+                
+              }
+            
+          });
+        });
+      });
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+      <h1 class="display-4">Карточка путешественника</h1>
+       <form>
+          <div class="form-group">
+            <label for="user"></label>
+            <input type="text" class="form-control" id="user"  placeholder="ФИО">
+          </div>
+              <div class="form-group">
+                <label for="years"></label>
+                <input type="text" id="years" class="form-control"  placeholder="Возраст">
+              </div>
+                  <div class="form-group">
+                    <label for="learn"></label>
+                    <input type="text" id="learn" class="form-control"  placeholder="Образование">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="income"></label>
+                      <input type="text" id="income" class="form-control"  placeholder="Доход">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passport"></label>
+                        <input type="text" id="passport" class="form-control"  placeholder="Паспорт">
+                      </div>
+                      <div class="form-group">
+                          <label for="family"></label>
+                          <input type="text" id="family" class="form-control"  placeholder="Семейное положение">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="place"></label>
+                            <input type="text" id="place" class="form-control"  placeholder="Место отдыха">
+                          </div>
+
+                          <div class="form-group">
+                              <label for="time"></label>
+                              <input type="text" id="time" class="form-control"  placeholder="Время прибывания">
+                            </div>
+          
+          <button type="button" id="submit" class="btn btn-primary">Отправить</button>
+          <button type="button" id="back" class="btn btn-primary" onclick="history.back(-1); return false;">Назад</button>
+   </form>
+  </body>
+</html>
